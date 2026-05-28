@@ -9,13 +9,10 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v4
-      - name: Debug workspace
-        run: |
-          pwd
-          ls -la
-          ls -R .github        
       - name: load and cache deps
         uses: ./.github/cache-deps
+        with: 
+          caching: 'false'
       - name: Lint code
         run: npm run lint
   test:
