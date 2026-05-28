@@ -9,6 +9,11 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v4
+      - name: Debug workspace
+        run: |
+          pwd
+          ls -la
+          ls -R .github        
       - name: load and cache deps
         uses: ./.github/cache-deps
       - name: Lint code
@@ -36,7 +41,7 @@ jobs:
       - name: Get code
         uses: actions/checkout@v4
       - name: load and cache deps
-        uses: ./.github/cache-deps/action.yml
+        uses: ./.github/cache-deps
       - name: Build website
         run: npm run build
       - name: Upload artifacts
